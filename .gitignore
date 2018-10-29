@@ -3,7 +3,7 @@
 !gradle/wrapper/gradle-wrapper.jar
 /log/
 /logs/
-/libs/
+/libs/ojdbc6.jar
 
 ### STS ###
 .apt_generated
