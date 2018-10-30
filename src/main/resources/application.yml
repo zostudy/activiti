@@ -42,7 +42,7 @@ com:
   asiainfo:
     generate:
        base-package: com.asiainfo.rms.workflow
-       process: zhbg
+       process: htywcl
        namespace: pages
        out-uri: F:\qycache
        table-remove-prefixes: sys_

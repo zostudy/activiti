@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
+  <process id="HTYWCLProcess" name="后台业务处理流程" isExecutable="true">
+    <startEvent id="HTYWCLStart" name="后台业务处理开始"></startEvent>
+    <userTask id="HTYECLSqbmsjjlsh" name="申请部门三级经理审核">
+      <extensionElements>
+        <activiti:taskListener event="create" delegateExpression="#{createHTYWCLProcessTaskListener}"></activiti:taskListener>
+        <activiti:taskListener event="delete" delegateExpression="#{deleteHTYWCLProcessTaskListener}"></activiti:taskListener>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="flow1" sourceRef="HTYWCLStart" targetRef="HTYECLSqbmsjjlsh"></sequenceFlow>
+    <userTask id="HTYECLSqbmejjlsh" name="申请部门二级经理审核">
+      <extensionElements>
+        <activiti:taskListener event="create" delegateExpression="#{createHTYWCLProcessTaskListener}"></activiti:taskListener>
+        <activiti:taskListener event="delete" delegateExpression="#{deleteHTYWCLProcessTaskListener}"></activiti:taskListener>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="flow2" sourceRef="HTYECLSqbmsjjlsh" targetRef="HTYECLSqbmejjlsh"></sequenceFlow>
+    <userTask id="HTYECLZqbglrysh" name="政企部管理人员审核">
+      <extensionElements>
+        <activiti:taskListener event="create" delegateExpression="#{createHTYWCLProcessTaskListener}"></activiti:taskListener>
+        <activiti:taskListener event="delete" delegateExpression="#{deleteHTYWCLProcessTaskListener}"></activiti:taskListener>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="flow3" sourceRef="HTYECLSqbmejjlsh" targetRef="HTYECLZqbglrysh">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${verify=='HTYECLZqbglrysh'}]]></conditionExpression>
+    </sequenceFlow>
+    <userTask id="HTYECLScbglrysh" name="市场部管理人员审核">
+      <extensionElements>
+        <activiti:taskListener event="create" delegateExpression="#{createHTYWCLProcessTaskListener}"></activiti:taskListener>
+        <activiti:taskListener event="delete" delegateExpression="#{deleteHTYWCLProcessTaskListener}"></activiti:taskListener>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="flow4" sourceRef="HTYECLSqbmejjlsh" targetRef="HTYECLScbglrysh">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${verify=='HTYECLScbglrysh'}]]></conditionExpression>
+    </sequenceFlow>
+    <userTask id="HTYECLZqbsjjlsh" name="政企部三级经理审核">
+      <extensionElements>
+        <activiti:taskListener event="create" delegateExpression="#{createHTYWCLProcessTaskListener}"></activiti:taskListener>
+        <activiti:taskListener event="delete" delegateExpression="#{deleteHTYWCLProcessTaskListener}"></activiti:taskListener>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="flow5" sourceRef="HTYECLZqbglrysh" targetRef="HTYECLZqbsjjlsh"></sequenceFlow>
+    <userTask id="HTYECLZqbejjlsh" name="政企部二级经理审核">
+      <extensionElements>
+        <activiti:taskListener event="create" delegateExpression="#{createHTYWCLProcessTaskListener}"></activiti:taskListener>
+        <activiti:taskListener event="delete" delegateExpression="#{deleteHTYWCLProcessTaskListener}"></activiti:taskListener>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="flow6" sourceRef="HTYECLZqbsjjlsh" targetRef="HTYECLZqbejjlsh"></sequenceFlow>
+    <userTask id="HTYECLSchsjjlsh" name="市场部三级经理审核">
+      <extensionElements>
+        <activiti:taskListener event="create" delegateExpression="#{createHTYWCLProcessTaskListener}"></activiti:taskListener>
+        <activiti:taskListener event="delete" delegateExpression="#{deleteHTYWCLProcessTaskListener}"></activiti:taskListener>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="flow7" sourceRef="HTYECLScbglrysh" targetRef="HTYECLSchsjjlsh"></sequenceFlow>
+    <userTask id="HTYECLScbejjlsh" name="市场部二级经理审核">
+      <extensionElements>
+        <activiti:taskListener event="create" delegateExpression="#{createHTYWCLProcessTaskListener}"></activiti:taskListener>
+        <activiti:taskListener event="delete" delegateExpression="#{deleteHTYWCLProcessTaskListener}"></activiti:taskListener>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="flow8" sourceRef="HTYECLSchsjjlsh" targetRef="HTYECLScbejjlsh"></sequenceFlow>
+    <userTask id="HTYECLYwglbsjjlsh" name="业务管理部三级经理审核">
+      <extensionElements>
+        <activiti:taskListener event="create" delegateExpression="#{createHTYWCLProcessTaskListener}"></activiti:taskListener>
+        <activiti:taskListener event="delete" delegateExpression="#{deleteHTYWCLProcessTaskListener}"></activiti:taskListener>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="flow9" sourceRef="HTYECLZqbejjlsh" targetRef="HTYECLYwglbsjjlsh"></sequenceFlow>
+    <sequenceFlow id="flow10" sourceRef="HTYECLScbejjlsh" targetRef="HTYECLYwglbsjjlsh"></sequenceFlow>
+    <userTask id="HTYECLYzssryhtywcl" name="业支实施人员后台业务处理">
+      <extensionElements>
+        <activiti:taskListener event="create" delegateExpression="#{createHTYWCLProcessTaskListener}"></activiti:taskListener>
+        <activiti:taskListener event="delete" delegateExpression="#{deleteHTYWCLProcessTaskListener}"></activiti:taskListener>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="flow11" sourceRef="HTYECLYwglbsjjlsh" targetRef="HTYECLYzssryhtywcl"></sequenceFlow>
+    <userTask id="HTYECLSqryz" name="申请人验证">
+      <extensionElements>
+        <activiti:taskListener event="create" delegateExpression="#{createHTYWCLProcessTaskListener}"></activiti:taskListener>
+        <activiti:taskListener event="delete" delegateExpression="#{deleteHTYWCLProcessTaskListener}"></activiti:taskListener>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="flow12" sourceRef="HTYECLYzssryhtywcl" targetRef="HTYECLSqryz"></sequenceFlow>
+    <endEvent id="HTYECLEnd" name="后台业务处理结束">
+      <extensionElements>
+        <activiti:executionListener event="end" delegateExpression="#{endHTYWCLProcessTaskListener}"></activiti:executionListener>
+      </extensionElements>
+    </endEvent>
+    <sequenceFlow id="flow13" sourceRef="HTYECLSqryz" targetRef="HTYECLEnd"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_HTYWCLProcess">
+    <bpmndi:BPMNPlane bpmnElement="HTYWCLProcess" id="BPMNPlane_HTYWCLProcess">
+      <bpmndi:BPMNShape bpmnElement="HTYWCLStart" id="BPMNShape_HTYWCLStart">
+        <omgdc:Bounds height="35.0" width="35.0" x="235.0" y="130.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="HTYECLSqbmsjjlsh" id="BPMNShape_HTYECLSqbmsjjlsh">
+        <omgdc:Bounds height="55.0" width="105.0" x="200.0" y="20.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="HTYECLSqbmejjlsh" id="BPMNShape_HTYECLSqbmejjlsh">
+        <omgdc:Bounds height="55.0" width="105.0" x="350.0" y="20.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="HTYECLZqbglrysh" id="BPMNShape_HTYECLZqbglrysh">
+        <omgdc:Bounds height="55.0" width="105.0" x="350.0" y="120.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="HTYECLScbglrysh" id="BPMNShape_HTYECLScbglrysh">
+        <omgdc:Bounds height="55.0" width="105.0" x="500.0" y="20.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="HTYECLZqbsjjlsh" id="BPMNShape_HTYECLZqbsjjlsh">
+        <omgdc:Bounds height="55.0" width="105.0" x="350.0" y="200.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="HTYECLZqbejjlsh" id="BPMNShape_HTYECLZqbejjlsh">
+        <omgdc:Bounds height="55.0" width="105.0" x="350.0" y="310.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="HTYECLSchsjjlsh" id="BPMNShape_HTYECLSchsjjlsh">
+        <omgdc:Bounds height="55.0" width="105.0" x="500.0" y="120.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="HTYECLScbejjlsh" id="BPMNShape_HTYECLScbejjlsh">
+        <omgdc:Bounds height="55.0" width="105.0" x="500.0" y="200.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="HTYECLYwglbsjjlsh" id="BPMNShape_HTYECLYwglbsjjlsh">
+        <omgdc:Bounds height="55.0" width="105.0" x="500.0" y="310.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="HTYECLYzssryhtywcl" id="BPMNShape_HTYECLYzssryhtywcl">
+        <omgdc:Bounds height="55.0" width="105.0" x="650.0" y="310.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="HTYECLSqryz" id="BPMNShape_HTYECLSqryz">
+        <omgdc:Bounds height="55.0" width="105.0" x="650.0" y="200.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="HTYECLEnd" id="BPMNShape_HTYECLEnd">
+        <omgdc:Bounds height="35.0" width="35.0" x="685.0" y="130.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
+        <omgdi:waypoint x="252.0" y="130.0"></omgdi:waypoint>
+        <omgdi:waypoint x="252.0" y="75.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
+        <omgdi:waypoint x="305.0" y="47.0"></omgdi:waypoint>
+        <omgdi:waypoint x="350.0" y="47.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow3" id="BPMNEdge_flow3">
+        <omgdi:waypoint x="402.0" y="75.0"></omgdi:waypoint>
+        <omgdi:waypoint x="402.0" y="120.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow4" id="BPMNEdge_flow4">
+        <omgdi:waypoint x="455.0" y="47.0"></omgdi:waypoint>
+        <omgdi:waypoint x="500.0" y="47.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow5" id="BPMNEdge_flow5">
+        <omgdi:waypoint x="402.0" y="175.0"></omgdi:waypoint>
+        <omgdi:waypoint x="402.0" y="200.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow6" id="BPMNEdge_flow6">
+        <omgdi:waypoint x="402.0" y="255.0"></omgdi:waypoint>
+        <omgdi:waypoint x="402.0" y="310.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow7" id="BPMNEdge_flow7">
+        <omgdi:waypoint x="552.0" y="75.0"></omgdi:waypoint>
+        <omgdi:waypoint x="552.0" y="120.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow8" id="BPMNEdge_flow8">
+        <omgdi:waypoint x="552.0" y="175.0"></omgdi:waypoint>
+        <omgdi:waypoint x="552.0" y="200.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow9" id="BPMNEdge_flow9">
+        <omgdi:waypoint x="455.0" y="337.0"></omgdi:waypoint>
+        <omgdi:waypoint x="500.0" y="337.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow10" id="BPMNEdge_flow10">
+        <omgdi:waypoint x="552.0" y="255.0"></omgdi:waypoint>
+        <omgdi:waypoint x="552.0" y="310.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow11" id="BPMNEdge_flow11">
+        <omgdi:waypoint x="605.0" y="337.0"></omgdi:waypoint>
+        <omgdi:waypoint x="650.0" y="337.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow12" id="BPMNEdge_flow12">
+        <omgdi:waypoint x="702.0" y="310.0"></omgdi:waypoint>
+        <omgdi:waypoint x="702.0" y="255.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow13" id="BPMNEdge_flow13">
+        <omgdi:waypoint x="702.0" y="200.0"></omgdi:waypoint>
+        <omgdi:waypoint x="702.0" y="165.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

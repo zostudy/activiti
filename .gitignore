@@ -3,6 +3,7 @@
 !gradle/wrapper/gradle-wrapper.jar
 /log/
 /logs/
+/bin/
 /libs/ojdbc6.jar
 
 ### STS ###

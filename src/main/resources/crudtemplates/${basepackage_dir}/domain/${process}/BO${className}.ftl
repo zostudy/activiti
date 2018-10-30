@@ -54,8 +54,8 @@ public class BO${className} {
 	}
 	
 	@Id
-	@GeneratedValue(strategy= GenerationType.SEQUENCE,generator="ALM_XJ_EXPENSES_AUTHOR_SEQ")
-	@SequenceGenerator(sequenceName="ALM_XJ_EXPENSES$SEQ",allocationSize=1,name="ALM_XJ_EXPENSES_AUTHOR_SEQ")
+	@GeneratedValue(strategy= GenerationType.SEQUENCE,generator="ALM_XJ_HTYWCL_SEQ")
+	@SequenceGenerator(sequenceName="ALM_XJ_HTYWCL$SEQ",allocationSize=1,name="ALM_XJ_HTYWCL_SEQ")
 	@Column(name = "${column.sqlName}", unique = ${column.unique?string}, nullable = ${column.nullable?string}, insertable = true, updatable = true, length = ${column.size})
 	public ${column.javaType} get${column.columnName}() {
 		return this.${column.columnNameLower};
